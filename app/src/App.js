@@ -1,12 +1,41 @@
-import React from 'react';
-import './App.css';
-import twitterLogo from './assets/twitter-logo.svg';
+import React, { useEffect } from 'react'
+import './App.css'
+import twitterLogo from './assets/twitter-logo.svg'
 
 // Constants
-const TWITTER_HANDLE = '_buildspace';
-const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+const TWITTER_HANDLE = 'aakashb_95'
+const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`
 
 const App = () => {
+  const checkIfWalletIsConnected = async () => {
+    try {
+      const { solana } = window
+      if (solana) {
+        if (solana.isPhantom) {
+          console.log('Phantom Wallet found')
+
+          const response = await solana.connect({ onlyIfTrusted: true })
+          console.log(
+            'Connected to Phantom Wallet',
+            response.publicKey.toString(),
+          )
+        } else {
+          alert('Get a phantom wallet to use this app')
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    const onLoad = async () => {
+      await checkIfWalletIsConnected()
+    }
+    window.addEventListener('load', onLoad)
+    return () => window.removeEventListener('load', onLoad)
+  }, [])
+
   return (
     <div className="App">
       <div className="container">
@@ -25,7 +54,7 @@ const App = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
