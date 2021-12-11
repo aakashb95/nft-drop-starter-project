@@ -1,5 +1,5 @@
 {
-    "name": "NAME_OF_NFT",
+    "name": "manchester_united",
     "symbol": "",
     "image": "2.png",
     "properties": {
@@ -11,7 +11,7 @@
         ],
         "creators": [
             {
-                "address": "AsGcvNFCmUFAja84Y36owi5SEV5UY9Q7JNuYy4KnZBUE",
+                "address": "8XKKTF5jjZE6Am4nxEvk7BxX3PgZnETCEiqDJLgqiYV8",
                 "share": 100
             }
         ]
